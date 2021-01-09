@@ -13,12 +13,17 @@ function App() {
 
 
     //get data
+    async function fetchData(){
+       const result = await axios.get('https://opentdb.com/api_category.php')
+       setCategories(result.data.trivia_categories)
+    }
     useEffect(() => {
-        axios
+        /* axios
             .get('https://opentdb.com/api_category.php')
             .then(res => {
                 setCategories(res.data.trivia_categories)
-            })
+            }) */
+        fetchData()
     }, [])
 
     //decode string
